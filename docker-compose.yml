@@ -10,6 +10,8 @@ services:
       MYSQL_DATABASE: nssdb
       MYSQL_USER: user
       MYSQL_PASSWORD: password
+    command:
+      --lower_case_table_names=2
     volumes:
       - ./mysql-data:/var/lib/mysql           # Ghi persist DB ra host folder
       - ./docker/mysql-init:/docker-entrypoint-initdb.d:ro  # init scripts
