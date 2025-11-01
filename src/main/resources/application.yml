@@ -1,0 +1,50 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/nssdb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: user
+    password: password
+
+  jpa:
+    # Chọn 'update' để Hibernate tự tạo/upgrade bảng; hoặc 'none' nếu bạn dùng init.sql
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 575953392384-2cg2p0981pr8fgm1v827v7r7rhg24eon.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - openid
+              - profile
+              - email
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            client-name: Google
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://openidconnect.googleapis.com/v1/userinfo
+            jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
+
+app:
+  jwt:
+    secret: verySecretKeyChangeThisForProd123!
+    expiration-ms: 3600000 # 1 hour
+  initial:
+    admin-email: admin@nepgap.test
+    admin-password: admin123
+  oauth2:
+    success-redirect-url: ${APP_OAUTH2_REDIRECT_URL:http://localhost:3000/oauth2/redirect}
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG

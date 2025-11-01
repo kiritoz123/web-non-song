@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: nss-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword       # đổi theo ý bạn
+      MYSQL_DATABASE: nssdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./mysql-data:/var/lib/mysql           # Ghi persist DB ra host folder
+      - ./docker/mysql-init:/docker-entrypoint-initdb.d:ro  # init scripts
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD","mysqladmin","ping","-h","localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: nss-app
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      # Spring Boot datasource (point to mysql service name)
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/nssdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+
+      # Disable Hibernate auto DDL because we provide init SQL (set to 'none').
+      # If you prefer Hibernate to create/update schema, set to 'update' and remove/init.sql
+      SPRING_JPA_HIBERNATE_DDL_AUTO: none
+
+      # JWT envs (app may read these names — kiểm tra mã, có thể map lại)
+      APP_JWT_SECRET: verySecretKeyChangeThisForProd123!
+      APP_JWT_EXPIRATION_MS: 3600000
+
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./logs:/logs          # optional: store logs outside container
+    # you can add healthcheck for app if needed
