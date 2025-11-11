@@ -96,6 +96,7 @@ CREATE TABLE IF NOT EXISTS cart_items (
 -- Payment transactions
 CREATE TABLE IF NOT EXISTS payment_transactions (
                                                     id BIGINT NOT NULL AUTO_INCREMENT,
+                                                    order_id BIGINT,
                                                     provider VARCHAR(50),
     external_id VARCHAR(255),
     amount DECIMAL(18,2),
@@ -103,7 +104,8 @@ CREATE TABLE IF NOT EXISTS payment_transactions (
     status VARCHAR(50),
     user_id BIGINT,
     created_at DATETIME,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    CONSTRAINT fk_payment_order FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- 3D models
