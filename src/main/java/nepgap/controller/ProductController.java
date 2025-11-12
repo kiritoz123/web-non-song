@@ -58,6 +58,19 @@ public class ProductController {
 
     }
 
+    @GetMapping("/public/product/coming-soon")
+    public ResponseEntity<ApiResponse<List<ProductProjection>>> listPublicComingSoon(HttpServletRequest req) {
+        List<ProductProjection> list = productRepository.findAllProductComingSoon();
+            ApiResponse<List<ProductProjection>> ar = ApiResponse.<List<ProductProjection>>builder()
+                    .timestamp(Instant.now())
+                    .status(HttpStatus.OK.value())
+                    .message("Products fetched")
+                    .data(list)
+                    .path(req.getRequestURI())
+                    .build();
+            return ResponseEntity.ok(ar);
+    }
+
     // Public: get product by id
     @GetMapping("/public/products/{id}")
     public ResponseEntity<ApiResponse<Product>> getById(@PathVariable Long id, HttpServletRequest req) {

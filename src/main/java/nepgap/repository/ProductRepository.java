@@ -17,7 +17,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 
     @Query("""
-        SELECT p.id as id, p.name as name, p.description as description, p.price as price,p.locale as locale,p.stock as stock ,p.status as status,pi.url as url FROM Product p LEFT JOIN ProductImage pi ON p.id = pi.productId
+        SELECT p.id as id, p.name as name, p.description as description, p.price as price,p.locale as locale,p.stock as stock ,p.status as status,pi.url as url FROM Product p LEFT JOIN ProductImage pi ON p.id = pi.productId where p.status <> nepgap.model.ProductStatus.DRAFT
         """)
     List<ProductProjection> findAllProduct();
+
+    @Query("""
+        SELECT p.id as id, p.name as name, p.description as description, p.price as price,p.locale as locale,p.stock as stock ,p.status as status,pi.url as url FROM Product p LEFT JOIN ProductImage pi ON p.id = pi.productId where p.status = nepgap.model.ProductStatus.DRAFT
+        """)
+    List<ProductProjection> findAllProductComingSoon();
 }
