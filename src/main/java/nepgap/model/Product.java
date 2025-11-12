@@ -29,9 +29,6 @@ public class Product {
 
     private String locale = "vn";
 
-    @ElementCollection
-    private List<String> images;
-
     private Integer stock = 0;
 
     @Enumerated(EnumType.STRING)

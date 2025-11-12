@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import nepgap.dto.ApiResponse;
 import nepgap.model.Product;
+import nepgap.model.ProductProjection;
 import nepgap.model.ProductStatus;
 import nepgap.repository.ProductRepository;
 import nepgap.security.UserPrincipal;
@@ -30,22 +31,31 @@ public class ProductController {
 
     // Public: list all published products (or all if admin)
     @GetMapping("/public/products")
-    public ResponseEntity<ApiResponse<List<Product>>> listPublic(@RequestParam(value = "q", required = false) String q,
+    public ResponseEntity<ApiResponse<List<ProductProjection>>> listPublic(@RequestParam(value = "q", required = false) String q,
                                                                  HttpServletRequest req) {
-        List<Product> list;
+        List<ProductProjection> list;
         if (q != null && !q.isBlank()) {
-            list = productRepository.findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(q, q);
+            list = productRepository.searchByKeyword(q);
+            ApiResponse<List<ProductProjection>> ar = ApiResponse.<List<ProductProjection>>builder()
+                    .timestamp(Instant.now())
+                    .status(HttpStatus.OK.value())
+                    .message("Products fetched")
+                    .data(list)
+                    .path(req.getRequestURI())
+                    .build();
+            return ResponseEntity.ok(ar);
         } else {
-            list = productRepository.findAll();
+            list = productRepository.findAllProduct();
+            ApiResponse<List<ProductProjection>> ar = ApiResponse.<List<ProductProjection>>builder()
+                    .timestamp(Instant.now())
+                    .status(HttpStatus.OK.value())
+                    .message("Products fetched")
+                    .data(list)
+                    .path(req.getRequestURI())
+                    .build();
+            return ResponseEntity.ok(ar);
         }
-        ApiResponse<List<Product>> ar = ApiResponse.<List<Product>>builder()
-                .timestamp(Instant.now())
-                .status(HttpStatus.OK.value())
-                .message("Products fetched")
-                .data(list)
-                .path(req.getRequestURI())
-                .build();
-        return ResponseEntity.ok(ar);
+
     }
 
     // Public: get product by id
@@ -100,7 +110,6 @@ public class ProductController {
         p.setDescription(payload.getDescription());
         p.setPrice(payload.getPrice());
         p.setSku(payload.getSku());
-        p.setImages(payload.getImages());
         p.setStock(payload.getStock());
         if (payload.getStatus() != null) p.setStatus(payload.getStatus());
         Product updated = productRepository.save(p);
