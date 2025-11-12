@@ -12,12 +12,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(String name, String desc);
 
-    @Query("select p.id, p.name, p.description, p.price,p.locale,p.stock,p.status,pi.url from Product p LEFT JOIN ProductImage pi where (:q is null or lower(p.name) like lower(concat('%',:q,'%')) or lower(p.description) like lower(concat('%',:q,'%')))")
+    @Query("select p.id as id, p.name as name, p.description as description, p.price as price,p.locale as locale,p.stock as stock ,p.status as status,pi.url from Product p LEFT JOIN ProductImage pi where (:q is null or lower(p.name) like lower(concat('%',:q,'%')) or lower(p.description) like lower(concat('%',:q,'%')))")
     List<ProductProjection> searchByKeyword(String q);
 
 
     @Query("""
-        SELECT p.id, p.name, p.description, p.price,p.locale,p.stock,p.status,pi.url FROM Product p LEFT JOIN ProductImage pi ON p.id = pi.productId
+        SELECT p.id as id, p.name as name, p.description as description, p.price as price,p.locale as locale,p.stock as stock ,p.status as status,pi.url as url FROM Product p LEFT JOIN ProductImage pi ON p.id = pi.productId
         """)
     List<ProductProjection> findAllProduct();
 }
