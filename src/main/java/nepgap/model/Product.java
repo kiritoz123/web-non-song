@@ -27,7 +27,7 @@ public class Product {
 
     private String sku;
 
-    private String locale = "vn";
+    private String place;
 
     private Integer stock = 0;
 

@@ -7,7 +7,7 @@ public interface ProductProjection {
     String getName();
     String getDescription();
     BigDecimal getPrice();
-    String getLocale();
+    String getPlace();
     Integer getStock();
     String getStatus();
     String getUrl();
