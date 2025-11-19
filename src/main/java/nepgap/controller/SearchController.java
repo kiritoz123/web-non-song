@@ -33,8 +33,8 @@ public class SearchController {
         return ResponseEntity.ok(res);
     }
 
-    @GetMapping
-    private Map<String, Object> getSearchResult(String normalizedQuery) {
+    @GetMapping("/tin-tuc/{normalizedQuery}")
+    public Map<String, Object> getSearchResult(@PathVariable String normalizedQuery) {
         Map<String, Object> result = new HashMap<>();
         if (normalizedQuery.contains("van mieu") || normalizedQuery.contains("quoc tu giam")) {
             result.put("text", "Di tích lịch sử và kiến trúc nghệ thuật Văn Miếu - Quốc Tử Giám\n\n" +
