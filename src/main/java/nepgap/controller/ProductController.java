@@ -73,10 +73,10 @@ public class ProductController {
 
     // Public: get product by id
     @GetMapping("/public/products/{id}")
-    public ResponseEntity<ApiResponse<Product>> getById(@PathVariable Long id, HttpServletRequest req) {
-        Optional<Product> p = productRepository.findById(id);
+    public ResponseEntity<ApiResponse<ProductProjection>> getById(@PathVariable Long id, HttpServletRequest req) {
+        Optional<ProductProjection> p = productRepository.findByIdAndImage(id);
         if (p.isEmpty()) {
-            ApiResponse<Product> ar = ApiResponse.<Product>builder()
+            ApiResponse<ProductProjection> ar = ApiResponse.<ProductProjection>builder()
                     .timestamp(Instant.now())
                     .status(HttpStatus.NOT_FOUND.value())
                     .message("Product not found")
@@ -84,7 +84,7 @@ public class ProductController {
                     .build();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ar);
         }
-        ApiResponse<Product> ar = ApiResponse.<Product>builder()
+        ApiResponse<ProductProjection> ar = ApiResponse.<ProductProjection>builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.OK.value())
                 .message("Product fetched")
