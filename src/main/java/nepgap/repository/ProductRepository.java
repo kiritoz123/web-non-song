@@ -5,6 +5,7 @@ import nepgap.model.Product;
 import nepgap.model.ProductProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +30,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 
     @Query("""
-        SELECT p.id as id, p.name as name, p.description as description, p.price as price,p.place as place,p.stock as stock ,p.status as status,pi.url as url FROM Product p LEFT JOIN ProductImage pi ON p.id = pi.productId where p.status = nepgap.model.ProductStatus.PUBLISHED and p.id = id
+        SELECT p.id as id, p.name as name, p.description as description, p.price as price,p.place as place,p.stock as stock ,p.status as status,pi.url as url FROM Product p LEFT JOIN ProductImage pi ON p.id = pi.productId where p.status = nepgap.model.ProductStatus.PUBLISHED and p.id = :id
         """)
-    Optional<ProductProjection> findByIdAndImage(Long id);
+    Optional<ProductProjection> findByIdAndImage(@Param("id") Long id);
 }
