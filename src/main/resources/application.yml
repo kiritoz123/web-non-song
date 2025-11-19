@@ -20,8 +20,8 @@ spring:
       client:
         registration:
           google:
-            client-id: 575953392384-2cg2p0981pr8fgm1v827v7r7rhg24eon.apps.googleusercontent.com
-            client-secret: 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
+            client-id: 575953392384-6btsdkcgvkdek3mo49abp42jge1qmhsn.apps.googleusercontent.com
+            client-secret: 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
             scope:
               - openid
               - profile
