@@ -4,9 +4,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import nepgap.dto.ApiResponse;
 import nepgap.dto.SearchResultDTO;
 import nepgap.service.SearchService;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -265,5 +269,17 @@ public class SearchController {
             return result;
         }
         return result; // Empty
+    }
+    @GetMapping(value = "/vn-json", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> getVnJson() {
+        try {
+            ClassPathResource resource = new ClassPathResource("vn.json");
+            String content = new String(resource.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+            return ResponseEntity.ok()
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(content);
+        } catch (IOException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
