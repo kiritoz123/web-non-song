@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/v1/search")
@@ -37,10 +34,10 @@ public class SearchController {
         return ResponseEntity.ok(res);
     }
 
-    @GetMapping("/tin-tuc/{normalizedQuery}")
-    public Map<String, Object> getSearchResult(@PathVariable String normalizedQuery) {
+    @GetMapping("/tin-tuc/{id}")
+    public Map<String, Object> getSearchResult(@PathVariable Long id) {
         Map<String, Object> result = new HashMap<>();
-        if (normalizedQuery.contains("van mieu") || normalizedQuery.contains("quoc tu giam")) {
+        if (id == 1) {
             result.put("text", "Di tích lịch sử và kiến trúc nghệ thuật Văn Miếu - Quốc Tử Giám\n\n" +
                     "Theo tư liệu lịch sử, năm 1070, Lý Thánh Tông cho dựng Văn Miếu, đắp tượng Khổng Tử, Chu Công, tứ phối, vẽ tượng thất thập nhị hiền, bốn mùa tế tự và cho Hoàng thái tử đến học. Năm 1076, triều đình lại cho lập Quốc Tử Giám. Năm 1253 (đời Trần), đổi tên Quốc Tử Giám thành Quốc Tử viện. Đến đời Lê (năm 1483), đổi tên Quốc Tử viện thành Thái Học đường. Thời Nguyễn, khu vực này được đổi thành Văn Miếu Hà Nội.\n\n" +
                     "Trong lịch sử, di tích là nơi thờ Thánh Nho (Khổng Tử), Chu Công, tứ phối, thất thập nhị hiền, Chu Văn An và là trường Quốc Học đào tạo trí thức Nho học của nước ta từ thời Lý đến thời Lê; đồng thời cũng là nơi dựng bia “đề danh” (hiện còn 82 bia) những tiến sĩ đã đỗ đạt trong các kỳ thi tiến sĩ từ thời Lý đến thời Lê, trong đó có nhiều danh nhân trong lịch sử nước ta.\n\n" +
@@ -73,7 +70,7 @@ public class SearchController {
                     "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763565052/post_2_jlhyh4.png"
             ));
             return result;
-        } else if (normalizedQuery.contains("hoa lo") || normalizedQuery.contains("nha tu hoa lo")) {
+        } else if (id==2) {
             result.put("text", "Di Tích Nhà Tù Hỏa Lò - Chứng nhân lịch sử giữa Lòng Thủ Đô\n\n" +
                     "Cuối thế kỷ XIX, nhằm đối phó với các phong trào đấu tranh của nhân dân Việt Nam, thực dân Pháp đã tăng cường bộ máy đàn áp: bổ sung lực lượng cảnh sát, hoàn chỉnh hệ thống toà án và xây dựng mạng lưới nhà tù. Năm 1896, trên đất làng Phụ Khánh - tổng Vĩnh Xương - huyện Thọ Xương - Hà Nội, thực dân Pháp đã xây dựng nhà tù Hỏa Lò. Đây là một trong số những nhà tù lớn nhất của thực dân Pháp ở Đông Dương.\n\n" +
                     "Từ một làng nghề thủ công làm đồ gốm có tiếng, thực dân Pháp đã biến mảnh đất Hỏa Lò thành nơi giam cầm và đày ải về thể xác và tinh thần của hàng ngàn chiến sỹ yêu nước, cách mạng Việt Nam. Sống trong ngục tù đế quốc, với chế độ giam cầm hà khắc, sinh hoạt đọa đày nhưng các chiến sỹ yêu nước, cách mạng vẫn giữ vững khí tiết, biến nhà tù thành trường học và là nơi phổ biến lý luận cách mạng. Nhiều người đã mưu trí vượt ngục trở về với nhân dân, với tổ chức, đóng góp xứng đáng vào sự nghiệp giải phóng dân tộc.\n\n" +
@@ -85,7 +82,7 @@ public class SearchController {
                     "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763565060/nh%C3%A0_t%C3%B9_h%E1%BB%8Fa_l%C3%B2_3_-_post_3_a81aiv.png"
             ));
             return result;
-        } else if (normalizedQuery.contains("trang an")) {
+        } else if (id==3) {
             result.put("text", "Khám phá vẻ đẹp quần thể danh thắng Tràng An\n\n" +
                     "Tràng An được ví như một “Hạ Long trên cạn” với vẻ đẹp tráng lệ được tạo nên bởi hệ thống núi đá muôn hình vạn trạng soi bóng xuống những dòng suối nhỏ quanh co, uốn lượn nối liền các hang động và thung lũng hoang sơ. Vẻ hài hòa của đá, sông nước, rừng cây và bầu trời ở Tràng An tạo nên một thế giới tự nhiên sống động đầy quyến rũ. Nơi đây còn là nơi bảo tồn và chứa đựng nhiều hệ sinh thái rừng ngập nước, rừng trên núi đá vôi, các di chỉ khảo cổ học và các di tích lịch sử văn hóa đặc sắc.\n\n" +
                     "Ngoài tuyến du lịch đường bộ có chiều dài 1,6km qua ba đèo liền nhau là đèo Cậy, đèo Vài và đèo đền Trần, đến với khu du lịch sinh thái Tràng An, du khách còn có thể lựa chọn tuyến du lịch đường thủy kết hợp leo núi theo một lộ trình khép kín. Xuất phát từ bến thuyền trung tâm với điểm dừng chân đầu tiên là đền Trình, tiếp theo du khách ngồi thuyền qua các hang Địa Linh, hang Tối, hang Sáng, hang Nấu Rượu rồi lên bờ và leo gần 500 bậc đá để vào dâng hương tại đền Trần. Sau đó, du khách xuống thuyền đi qua hang Sính, hang Si, hang Ba Giọt, hang Seo, hang Sơn Dương và lên thăm phủ Khống, rồi tiếp tục lộ trình đến hang Khống, hang Trần, hang Quy Hậu và trở về điểm xuất phát, kết thúc chuyến đi.\n\n" +
@@ -100,7 +97,7 @@ public class SearchController {
                     "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763565066/tr%C3%A0ng_an_2_-_post_4_jf9nf9.png"
             ));
             return result;
-        } else if (normalizedQuery.contains("hoa lu") || normalizedQuery.contains("co do hoa lu")) {
+        } else if (id==4) {
             result.put("text", "Khám Phá Vẻ Đẹp Cố Đô Hoa Lư - Dấu Ấn Lịch Sử Hào Hùng Dân Tộc Việt\n\n" +
                     "Cố đô Hoa Lư là điểm đến đậm đà giá trị văn hóa và lịch sử dân tộc. Mặc thời gian thoi đưa, cố đô vẫn yên bình nằm đó, tuy trầm mặc nhưng vẫn đầy uy nghi, là dấu ấn vàng son đánh dấu một thời dân tộc oai hùng. Vậy thật ra nơi cố đô có gì mà ai cũng khao khát được một lần ghé đến, hãy cùng tìm hiểu với Nếp Gấp Non Sông nhé!\n\n" +
                     "Cố Đô Hoa Lư ngự tại xã Trường Yên, huyện Hoa Lư, tỉnh Ninh Bình.\n\n" +
@@ -120,7 +117,7 @@ public class SearchController {
                     "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763565079/c%E1%BB%91_%C4%91%C3%B4_hoa_l%C6%B0_2-_post_5_d5sca4.png"
             ));
             return result;
-        } else if (normalizedQuery.contains("my son") || normalizedQuery.contains("thanh dia my son")) {
+        } else if (id==5) {
             result.put("text", "Thánh Địa Mỹ Sơn - Di Sản Văn Hóa Thế Giới\n\n" +
                     "Vị độ Bắc: 15°505\nKinh độ Đông: 108°573\nTổng diện tích: 1.158ha\nThôn Mỹ Sơn - Xã Thu Bồn - Thành phố Đà Nẵng\n\n" +
                     "Thánh địa Mỹ Sơn tọa lạc trong một thung lũng kín có địa thế núi non hùng vĩ, thâm nghiêm. Nơi đây, với hơn 70 công trình kiến trúc đền tháp của nền văn minh Chămpa được kết tinh trong những di chứng vật chất trường tồn, chứa đựng những giá trị về lịch sử, văn hóa, kiến trúc, nghệ thuật được tạo lập trong một thời gian dài suốt 9 thế kỷ (từ thế kỷ thứ IV đến thế kỷ XIII), được đánh giá ngang hàng với các di tích nổi tiếng trong khu vực Đông Nam á như Ăngko, Pagan, Bôrôbudua.\n\n" +
@@ -145,7 +142,7 @@ public class SearchController {
                     "https://upload.wikimedia.org/wikipedia/commons/8/8a/0040223_My_Son_Group_H%2C_Cham_Hindu_temples_complex%2C_Vietnam_029.jpg"
             ));
             return result;
-        } else if (normalizedQuery.contains("quang tri") || normalizedQuery.contains("thanh co quang tri")) {
+        } else if (id==6) {
             result.put("text", "Những dấu tích còn lại của thành cổ Quảng Trị - Một chiến trường khốc liệt\n\n" +
                     "Nằm lặng lẽ bên dòng sông Thạch Hãn hiền hòa, thành cổ Quảng Trị là chứng nhân lịch sử ghi dấu những tháng ngày khốc liệt nhất của cuộc kháng chiến chống Mỹ cứu nước. Không chỉ là một công trình kiến trúc quân sự vững chãi từ thời nhà Nguyễn, nơi đây còn khắc sâu vào tâm khảm người dân Việt Nam những ký ức đau thương nhưng hào hùng về 81 ngày đêm rực lửa năm 1972. Trải qua bao thăng trầm lịch sử, thành cổ Quảng Trị vẫn đứng đó, với những vết tích đạn bom in hằn trên từng bức tường gạch rêu phong, nhắc nhở thế hệ hôm nay về sự hy sinh to lớn của cha ông vì độc lập, tự do của Tổ quốc. \n\n" +
                     "1. Lịch sử thành cổ Quảng Trị - Nơi ghi dấu vết thời gian\n\n" +
@@ -165,7 +162,7 @@ public class SearchController {
                     "https://upload.wikimedia.org/wikipedia/commons/4/4e/Th%C3%A0nh_c%E1%BB%95_Qu%E1%BA%A3ng_Tr%E1%BB%8B_%28C%C3%A2y_%C4%91%C3%A8n_Thi%C3%AAn_M%E1%BB%87nh%29%2C_T%E1%BA%BFt_n%C4%83m_2018_%2819%29.jpg"
             ));
             return result;
-        } else if (normalizedQuery.contains("dinh doc lap")) {
+        } else if (id==7) {
             result.put("text", "Dinh Độc Lập - Dấu ấn đặc biệt về chiến thắng lịch sử của dân tộc\n\n" +
                     "Dinh Độc Lập được công nhận là Di tích lịch sử văn hóa quốc gia bằng Quyết định số 77A/VHQĐ ngày 25/6/1976 của Bộ trưởng Bộ Văn hóa. Ngày 12 tháng 8 năm 2009, Thủ tướng Chính phủ nước Cộng hòa Xã hội Chủ nghĩa Việt Nam đã ký Quyết định số 1272/QĐ-TTg xếp hạng Di tích lịch sử Dinh Độc Lập là một trong 10 di tích quốc gia đặc biệt đầu tiên của cả nước.\n\n" +
                     "Cơ quan quản lý Di tích lịch sử Dinh Độc Lập là Hội trường Thống Nhất. Căn cứ Quyết định số 709/QĐ-VPCP ngày 14 tháng 6 năm 2013 của Bộ trưởng, Chủ nhiệm Văn phòng Chính phủ qui định chức năng, nhiệm vụ, quyền hạn và cơ cấu tổ chức của Hội trường Thống Nhất, thì Hội trường Thống Nhất là đơn vị sự nghiệp công lập thuộc Văn phòng Chính phủ có chức năng quản lý, bảo tồn, tôn tạo Di tích lịch sử Dinh Độc Lập; phục vụ đại biểu, khách tham dự các cuộc họp, hội nghị của Chính phủ, Thủ tướng Chính phủ và Văn phòng Chính phủ; các hội nghị và hoạt động khác của Đảng, Nhà nước, Quốc hội khi có yêu cầu; được tận dụng cơ sở vật chất, lao động để kinh doanh dịch vụ theo qui định của pháp luật.\n\n" +
@@ -195,7 +192,7 @@ public class SearchController {
                     "https://upload.wikimedia.org/wikipedia/commons/6/6d/Dinh_%C4%90%E1%BB%99c_l%E1%BA%ADp.JPG"
             ));
             return result;
-        } else if (normalizedQuery.contains("lang bac") || normalizedQuery.contains("lang ho chi minh")) {
+        } else if (id==8) {
             result.put("text", "Lăng Bác là nơi hội tụ và lan tỏa các giá trị truyền thống văn hóa, lịch sử của dân tộc việt nam\n\n" +
                     "Thể theo ý nguyện thiết tha của toàn Đảng, toàn dân, trong phiên họp sáng 29/11/1969, Bộ Chính trị Trung ương Đảng đã bàn và quyết định: Với tấm lòng kính yêu vô hạn và đời đời nhớ ơn Chủ tịch Hồ Chí Minh, chúng ta phải thực hiện đến mức tốt nhất nhiệm vụ giữ gìn lâu dài thi hài Chủ tịch Hồ Chí Minh và xây dựng Lăng của Người.\n\n" +
                     "Đảng và Nhà nước ta quyết định xây dựng lăng của Người tại Quảng trường Ba Đình lịch sử, nơi Người đọc bản Tuyên ngôn độc lập, tuyên bố thành lập nước Việt Nam Dân chủ Cộng hòa.\n\n" +
@@ -236,7 +233,7 @@ public class SearchController {
                     "https://upload.wikimedia.org/wikipedia/commons/3/3f/Ho_Chi_Minh_tomb.jpg"
             ));
             return result;
-        } else if (normalizedQuery.contains("hoang thanh") || normalizedQuery.contains("thang long")) {
+        } else if (id==9) {
             result.put("text", "Hoàng thành Thăng Long: Di Sản Giữa Lòng Hà Nội\n\n" +
                     "Ý nghĩa của công trình Hoàng thành Thăng Long\n\n" +
                     "Hoàng thành Thăng Long là minh chứng sống động cho tiến trình lịch sử kéo dài hơn 13 thế kỷ của Đại Việt. Với vai trò là trung tâm quyền lực chính trị qua nhiều triều đại, nơi đây ghi dấu những quyết sách quan trọng định hình vận mệnh đất nước. Những di tích còn sót lại, từ cổng thành, điện Kính Thiên cho đến các dấu tích khảo cổ, đều mang giá trị lịch sử và văn hóa to lớn, phản ánh sự phát triển của nghệ thuật kiến trúc và tư duy của người Việt cổ.\n\n" +
@@ -282,4 +279,75 @@ public class SearchController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/tin-tuc/all")
+    public List<Map<String, Object>> getAllNews() {
+        List<Map<String, Object>> allNews = new ArrayList<>();
+
+        // Văn Miếu - Quốc Tử Giám
+        Map<String, Object> vanMieu = new HashMap<>();
+        vanMieu.put("id",1);
+        vanMieu.put("title", "Di tích lịch sử và kiến trúc nghệ thuật Văn Miếu - Quốc Tử Giám");
+        vanMieu.put("imageUrl", "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763565051/v%C4%83n_mi%E1%BA%BFu_-_post_2_rcwqbs.png");
+        allNews.add(vanMieu);
+
+        // Nhà Tù Hỏa Lò
+        Map<String, Object> hoaLo = new HashMap<>();
+        hoaLo.put("id",2);
+        hoaLo.put("title", "Di Tích Nhà Tù Hỏa Lò - Chứng nhân lịch sử giữa Lòng Thủ Đô");
+        hoaLo.put("imageUrl", "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763565057/nh%C3%A0_t%C3%B9_h%E1%BB%8Fa_l%C3%B2_-_post_3_wxlh1l.png");
+        allNews.add(hoaLo);
+
+        // Tràng An
+        Map<String, Object> trangAn = new HashMap<>();
+        trangAn.put("id",3);
+        trangAn.put("title", "Khám phá vẻ đẹp quần thể danh thắng Tràng An");
+        trangAn.put("imageUrl", "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763565062/tr%C3%A0ng_an_-_post_4_eldyiz.png");
+        allNews.add(trangAn);
+
+        // Cố Đô Hoa Lư
+        Map<String, Object> hoaLu = new HashMap<>();
+        hoaLu.put("id",4);
+        hoaLu.put("title", "Khám Phá Vẻ Đẹp Cố Đô Hoa Lư - Dấu Ấn Lịch Sử Hào Hùng Dân Tộc Việt");
+        hoaLu.put("imageUrl", "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763565068/c%E1%BB%91_%C4%91%C3%B4_hoa_l%C6%B0_-_post_5_fh6qtn.png");
+        allNews.add(hoaLu);
+
+        // Thánh Địa Mỹ Sơn
+        Map<String, Object> mySon = new HashMap<>();
+        mySon.put("id",5);
+        mySon.put("title", "Thánh Địa Mỹ Sơn - Di Sản Văn Hóa Thế Giới");
+        mySon.put("imageUrl", "https://upload.wikimedia.org/wikipedia/commons/7/7c/Th%C3%A1nh_%C4%91%E1%BB%8Ba_M%E1%BB%B9_S%C6%A1n_1.JPG");
+        allNews.add(mySon);
+
+        // Thành Cổ Quảng Trị
+        Map<String, Object> quangTri = new HashMap<>();
+        quangTri.put("id",6);
+        quangTri.put("title", "Những dấu tích còn lại của thành cổ Quảng Trị - Một chiến trường khốc liệt");
+        quangTri.put("imageUrl", "https://upload.wikimedia.org/wikipedia/commons/0/0f/Th%C3%A0nh_c%E1%BB%95_Qu%E1%BA%A3ng_Tr%E1%BB%8B_%28h%E1%BB%8Da_ti%E1%BA%BFt_c%E1%BB%95ng_th%C3%A0nh%29%2C_T%E1%BA%BFt_n%C4%83m_2018_%2861%29.jpg");
+        allNews.add(quangTri);
+
+        // Dinh Độc Lập
+        Map<String, Object> dinhDocLap = new HashMap<>();
+        dinhDocLap.put("id",7);
+        dinhDocLap.put("title", "Dinh Độc Lập - Dấu ấn đặc biệt về chiến thắng lịch sử của dân tộc");
+        dinhDocLap.put("imageUrl", "https://upload.wikimedia.org/wikipedia/commons/7/7b/Independence_Palace_or_Reunification_Palace_%2812110973526%29.jpg");
+        allNews.add(dinhDocLap);
+
+        // Lăng Bác
+        Map<String, Object> langBac = new HashMap<>();
+        langBac.put("id",8);
+        langBac.put("title", "Lăng Bác là nơi hội tụ và lan tỏa các giá trị truyền thống văn hóa, lịch sử của dân tộc việt nam");
+        langBac.put("imageUrl", "https://upload.wikimedia.org/wikipedia/commons/5/5e/Lascar_Ho_Ch%C3%AD_Minh_Mausoleum_%284550987354%29.jpg");
+        allNews.add(langBac);
+
+        // Hoàng Thành Thăng Long
+        Map<String, Object> hoangThanh = new HashMap<>();
+        hoangThanh.put("id",9);
+        hoangThanh.put("title", "Hoàng thành Thăng Long: Di Sản Giữa Lòng Hà Nội");
+        hoangThanh.put("imageUrl", "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763565045/ho%C3%A0ng_th%C3%A0nh_th%C4%83ng_long_-_post_1_lujhju.png");
+        allNews.add(hoangThanh);
+
+        return allNews;
+    }
+
 }

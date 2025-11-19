@@ -11,14 +11,22 @@ import nepgap.dto.SignUpRequest;
 import nepgap.model.User;
 import nepgap.repository.UserRepository;
 import nepgap.security.JwtProvider;
+import nepgap.security.UserPrincipal;
 import nepgap.service.AuthService;
+import nepgap.service.CloudinaryService;
+import nepgap.service.EmailSenderService;
+import nepgap.service.OtpCacheService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.Instant;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,6 +36,9 @@ public class AuthController {
     private final AuthService authService;
     private final JwtProvider jwtProvider;
     private final UserRepository userRepository;
+    private final OtpCacheService cacheService;
+    private final CloudinaryService cloudinaryService;
+    private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/login")
     public ResponseEntity<ApiResponse<AuthResponse>> login(@Valid @RequestBody LoginRequest request, HttpServletRequest httpReq) {
@@ -98,5 +109,65 @@ public class AuthController {
     @GetMapping("/login/google")
     public void redirectToGoogle(HttpServletResponse response) throws IOException {
         response.sendRedirect("/oauth2/authorization/google");
+    }
+
+    @PostMapping("/account/forget-password")
+    public ResponseEntity<?> forgetPassword(@RequestBody Map<String, Object> request)
+    {
+        StringBuilder message = new StringBuilder();
+
+        if(authService.requestSendEmailForgetPassword(request, message)) {
+            return ResponseEntity.ok(message);
+        } else {
+            return ResponseEntity.badRequest().body(message.toString());
+        }
+    }
+    @PostMapping("/account/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestParam("otp") String otp, @RequestParam("email") String email,
+    @RequestParam("password") String password)
+    {
+        if(cacheService.getOtp(email) != null && cacheService.getOtp(email).equals(otp)) {
+            Optional<User> optional = userRepository.findByEmail(email);
+            User user = optional.get();
+            user.setPassword(passwordEncoder.encode(password));
+            return ResponseEntity.ok("Reset password success");
+        } else {
+            return ResponseEntity.badRequest().body("Reset fail");
+        }
+    }
+    @PostMapping("/user/avatar/upload")
+    public ResponseEntity<?> uploadAvatar(@RequestParam(value = "avatar") MultipartFile avatar,@AuthenticationPrincipal UserPrincipal user) throws IOException {
+        if((!avatar.getContentType().equals("image/png") &&
+                !avatar.getContentType().equals("image/jpeg")) || avatar.equals(null)) {
+            return ResponseEntity.badRequest().body("file extension must be .jpeg or .png");
+        }
+        String username = user.getEmail();
+        if(uploadAvatar(avatar, username)) {
+            return ResponseEntity.ok("Update avatar user: " + username + " success");
+        } else {
+            return ResponseEntity.badRequest().body("Update avatar user: " + username + " fail");
+        }
+    }
+    private Boolean uploadAvatar(MultipartFile avatar, String username) throws IOException {
+        Optional<User> usersOptional = userRepository.findByEmail(username);
+        System.out.println(username);
+        if (!usersOptional.isPresent()) {
+            return false;
+        }
+        User userLogin = usersOptional.get();
+        String url = cloudinaryService.uploadFile(
+                avatar.getBytes(),
+                String.valueOf(userLogin.getId()),
+                "MyAnimeProject_TLCN/user/avatar");
+        if (url.equals("-1")) {
+            return false;
+        }
+        userLogin.setAvatar(url);
+        try {
+            userRepository.save(userLogin);
+            return true;
+        } catch (Exception exception) {
+            return false;
+        }
     }
 }

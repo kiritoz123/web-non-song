@@ -1,6 +1,8 @@
 package nepgap.service.impl;
 
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
+import nepgap.config.EmailTemplate;
 import nepgap.dto.ApiResponse;
 import nepgap.dto.AuthResponse;
 import nepgap.dto.LoginRequest;
@@ -14,6 +16,8 @@ import nepgap.repository.UserRepository;
 import nepgap.security.JwtProvider;
 import nepgap.security.UserPrincipal;
 import nepgap.service.AuthService;
+import nepgap.service.EmailSenderService;
+import nepgap.service.OtpCacheService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,10 +25,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -35,6 +38,8 @@ public class AuthServiceImpl implements AuthService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
+    private final EmailSenderService emailSenderService;
+    private final OtpCacheService otpCacheService;
 
     @Override
     public AuthResponse login(LoginRequest request) {
@@ -77,5 +82,40 @@ public class AuthServiceImpl implements AuthService {
                 .path(path)
                 .build();
         return res;
+    }
+
+    public boolean requestSendEmailForgetPassword(Map<String, Object> request, StringBuilder message)
+    {
+        if(!request.containsKey("email")) {
+            message.append("Key email missing");
+            return false;
+        }
+
+        String email = request.get("email").toString();
+        Optional<User> usersEntityOptional = userRepository.findByEmail(email);
+        if (!usersEntityOptional.isPresent()) {
+            message.append("Email is not found");
+            return false;
+        }
+        User usersEntity = usersEntityOptional.get();
+
+        try {
+            String otpCode = String.format("%06d", new Random().nextInt(999999));
+            sendRecoveryEmail(email, otpCode);
+            otpCacheService.putOtp(email, otpCode, 180);
+            message.append("Send email forgot password success");
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            message.append("Send email forgot password error for exception");
+            return false;
+        }
+    }
+    private void sendRecoveryEmail(String addressGmail, String otpCode) throws MessagingException {
+        emailSenderService.sendAsHTML(
+                addressGmail,
+                "[Nep Gap Non Song] You have request for adding new gmail for" + addressGmail,
+                EmailTemplate.TemplateRecoveryPassword(addressGmail, otpCode)
+        );
     }
 }

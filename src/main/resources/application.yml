@@ -2,6 +2,18 @@ server:
   port: 8080
 
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: 21020331@vnu.edu.vn
+    password: efmwfatrepssivmk
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
   datasource:
     url: jdbc:mysql://localhost:3306/nssdb
     driver-class-name: com.mysql.cj.jdbc.Driver
