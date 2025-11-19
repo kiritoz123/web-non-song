@@ -29,6 +29,7 @@ public class ProfileServiceImpl implements ProfileService {
                 .email(user.getEmail())
                 .fullName(user.getFullName())
                 .phone(user.getPhone())
+                .avatar(user.getAvatar())
                 .build();
     }
 

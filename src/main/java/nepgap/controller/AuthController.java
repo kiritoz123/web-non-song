@@ -130,6 +130,7 @@ public class AuthController {
             Optional<User> optional = userRepository.findByEmail(email);
             User user = optional.get();
             user.setPassword(passwordEncoder.encode(password));
+            userRepository.save(user);
             return ResponseEntity.ok("Reset password success");
         } else {
             return ResponseEntity.badRequest().body("Reset fail");
