@@ -71,7 +71,7 @@ public class PaymentController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("payments/all")
+    @GetMapping("/all")
     public ResponseEntity<ApiResponse<List<Payment>>> getAllPayments(
             HttpServletRequest req) {
         List<Payment> payments = paymentRepository.findAll();
