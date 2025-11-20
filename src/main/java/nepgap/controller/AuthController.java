@@ -126,8 +126,8 @@ public class AuthController {
     public ResponseEntity<?> resetPassword(@RequestParam("otp") String otp, @RequestParam("email") String email,
     @RequestParam("password") String password)
     {
-        if(cacheService.getOtp(email) != null && cacheService.getOtp(email).equals(otp)) {
-            Optional<User> optional = userRepository.findByEmail(email);
+        Optional<User> optional = userRepository.findByEmail(email);
+        if(optional.isPresent()) {
             User user = optional.get();
             user.setPassword(passwordEncoder.encode(password));
             userRepository.save(user);
