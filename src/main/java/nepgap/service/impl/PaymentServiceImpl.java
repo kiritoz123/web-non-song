@@ -60,8 +60,8 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     @Transactional
-    public PaymentDTO updatePaymentStatus(Long userId, Long paymentId, UpdatePaymentStatusRequest request) {
-        Payment payment = paymentRepository.findByIdAndUserId(paymentId, userId)
+    public PaymentDTO updatePaymentStatus(Long paymentId, UpdatePaymentStatusRequest request) {
+        Payment payment = paymentRepository.findById(paymentId)
                 .orElseThrow(() -> new ApiException("Payment not found", HttpStatus.NOT_FOUND));
 
         PaymentStatus oldStatus = payment.getStatus();

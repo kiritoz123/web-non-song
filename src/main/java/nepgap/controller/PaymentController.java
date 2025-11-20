@@ -91,7 +91,7 @@ public class PaymentController {
             @PathVariable Long id,
             @Valid @RequestBody UpdatePaymentStatusRequest request,
             HttpServletRequest req) {
-        PaymentDTO payment = paymentService.updatePaymentStatus(user.getId(), id, request);
+        PaymentDTO payment = paymentService.updatePaymentStatus(id, request);
         ApiResponse<PaymentDTO> response = ApiResponse.<PaymentDTO>builder()
                 .timestamp(Instant.now())
                 .status(200)
