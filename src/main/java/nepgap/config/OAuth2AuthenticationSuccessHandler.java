@@ -46,7 +46,7 @@ public class OAuth2AuthenticationSuccessHandler implements AuthenticationSuccess
         String refreshToken = jwtProvider.generateRefreshToken(user.getEmail());
 
         // Redirect to frontend with token params (you may want to use cookies instead)
-        String redirectUrl = "frontendRedirect" +
+        String redirectUrl = "https://nepgapnonsong.com" +
                 "?accessToken=" + URLEncoder.encode(accessToken, StandardCharsets.UTF_8) +
                 "&refreshToken=" + URLEncoder.encode(refreshToken, StandardCharsets.UTF_8);
 
