@@ -316,28 +316,28 @@ public class SearchController {
         Map<String, Object> mySon = new HashMap<>();
         mySon.put("id",5);
         mySon.put("title", "Thánh Địa Mỹ Sơn - Di Sản Văn Hóa Thế Giới");
-        mySon.put("imageUrl", "https://upload.wikimedia.org/wikipedia/commons/7/7c/Th%C3%A1nh_%C4%91%E1%BB%8Ba_M%E1%BB%B9_S%C6%A1n_1.JPG");
+        mySon.put("imageUrl", "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763650943/th%C3%A1nh_%C4%91%E1%BB%8Ba_m%E1%BB%B9_s%C6%A1n_kndnag.png");
         allNews.add(mySon);
 
         // Thành Cổ Quảng Trị
         Map<String, Object> quangTri = new HashMap<>();
         quangTri.put("id",6);
         quangTri.put("title", "Những dấu tích còn lại của thành cổ Quảng Trị - Một chiến trường khốc liệt");
-        quangTri.put("imageUrl", "https://upload.wikimedia.org/wikipedia/commons/0/0f/Th%C3%A0nh_c%E1%BB%95_Qu%E1%BA%A3ng_Tr%E1%BB%8B_%28h%E1%BB%8Da_ti%E1%BA%BFt_c%E1%BB%95ng_th%C3%A0nh%29%2C_T%E1%BA%BFt_n%C4%83m_2018_%2861%29.jpg");
+        quangTri.put("imageUrl", "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763733119/53_vtibyq.png");
         allNews.add(quangTri);
 
         // Dinh Độc Lập
         Map<String, Object> dinhDocLap = new HashMap<>();
         dinhDocLap.put("id",7);
         dinhDocLap.put("title", "Dinh Độc Lập - Dấu ấn đặc biệt về chiến thắng lịch sử của dân tộc");
-        dinhDocLap.put("imageUrl", "https://upload.wikimedia.org/wikipedia/commons/7/7b/Independence_Palace_or_Reunification_Palace_%2812110973526%29.jpg");
+        dinhDocLap.put("imageUrl", "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763733164/Dinh_%C4%91%E1%BB%99c_l%E1%BA%ADp_2_xp4jga.png");
         allNews.add(dinhDocLap);
 
         // Lăng Bác
         Map<String, Object> langBac = new HashMap<>();
         langBac.put("id",8);
         langBac.put("title", "Lăng Bác là nơi hội tụ và lan tỏa các giá trị truyền thống văn hóa, lịch sử của dân tộc việt nam");
-        langBac.put("imageUrl", "https://upload.wikimedia.org/wikipedia/commons/5/5e/Lascar_Ho_Ch%C3%AD_Minh_Mausoleum_%284550987354%29.jpg");
+        langBac.put("imageUrl", "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763733205/67_mnfjex.png");
         allNews.add(langBac);
 
         // Hoàng Thành Thăng Long
