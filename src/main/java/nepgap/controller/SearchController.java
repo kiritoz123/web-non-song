@@ -138,8 +138,8 @@ public class SearchController {
                     "Một kho tàng văn hóa rực rỡ, một bảo tàng sinh động, mang giá trị thẩm mỹ của nhân loại. Nghệ thuật Mỹ Sơn đã thể hiện đây là mảnh đất của sự khẳng định giao thoa của nhiều nền văn hóa. Trong đó đầu tiên là Ấn Độ thuần túy, sau đó là bản địa, cuối cùng là hội nhập.\n\n" +
                     "Mỹ Sơn là một công trình nghệ thuật đặc sắc, độc đáo có giá trị đến ngày hôm nay. Một kỳ quan của tinh hoa nhân loại.");
             result.put("images", Arrays.asList(
-                    "https://upload.wikimedia.org/wikipedia/commons/7/7c/Th%C3%A1nh_%C4%91%E1%BB%8Ba_M%E1%BB%B9_S%C6%A1n_1.JPG",
-                    "https://upload.wikimedia.org/wikipedia/commons/8/8a/0040223_My_Son_Group_H%2C_Cham_Hindu_temples_complex%2C_Vietnam_029.jpg"
+                    "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763650943/th%C3%A1nh_%C4%91%E1%BB%8Ba_m%E1%BB%B9_s%C6%A1n_kndnag.png",
+                    "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763733477/tin_t%E1%BB%A9c_-_th%C3%A1nh_%C4%91%E1%BB%8Ba_m%E1%BB%B9_s%C6%A1n_oyvskz.png"
             ));
             return result;
         } else if (id==6) {
@@ -158,8 +158,8 @@ public class SearchController {
                     "Từ thập niên 90 của thế kỷ 20, tỉnh Quảng Trị đã tiến hành tôn tạo di tích, phục chế bốn cổng chính và một số đoạn tường thành. Ở trung tâm thành, một đài tưởng niệm được xây dựng, mang hình dáng một nấm mồ chung, nơi an nghỉ của những linh hồn liệt sĩ. Đài tưởng niệm cao 8,1m, tượng trưng cho 81 ngày đêm khói lửa, với thiết kế theo triết lý âm dương, gửi gắm mong ước siêu thoát cho các anh hùng.\n\n" +
                     "Bên cạnh đài tưởng niệm, Thành cổ Quảng Trị còn có tháp chuông khánh thành năm 2007, nơi tiếng chuông ngân vang trong các dịp lễ lớn, như Ngày Thương binh - Liệt sĩ (27/7). Dọc bờ sông Thạch Hãn, bến hoa đăng là nơi diễn ra nghi thức thả đèn hoa đăng, một hoạt động tâm linh đầy xúc động để tri ân các liệt sĩ. Bảo tàng Thành cổ Quảng Trị là nơi lưu giữ những di vật quý giá, từ những bức thư vĩnh biệt của các chiến sĩ đến những hiện vật chiến tranh. Mỗi kỷ vật là một câu chuyện, một ký ức sống động về những ngày tháng hào hùng.");
             result.put("images", Arrays.asList(
-                    "https://upload.wikimedia.org/wikipedia/commons/0/0f/Th%C3%A0nh_c%E1%BB%95_Qu%E1%BA%A3ng_Tr%E1%BB%8B_%28h%E1%BB%8Da_ti%E1%BA%BFt_c%E1%BB%95ng_th%C3%A0nh%29%2C_T%E1%BA%BFt_n%C4%83m_2018_%2861%29.jpg",
-                    "https://upload.wikimedia.org/wikipedia/commons/4/4e/Th%C3%A0nh_c%E1%BB%95_Qu%E1%BA%A3ng_Tr%E1%BB%8B_%28C%C3%A2y_%C4%91%C3%A8n_Thi%C3%AAn_M%E1%BB%87nh%29%2C_T%E1%BA%BFt_n%C4%83m_2018_%2819%29.jpg"
+                    "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763733119/53_vtibyq.png",
+                    "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763733120/52_hl3lia.png"
             ));
             return result;
         } else if (id==7) {
@@ -188,8 +188,8 @@ public class SearchController {
                     "Tiến sĩ Tạ Duy Linh, Viện trưởng Viện Nghiên cứu Kinh tế - Du lịch TP Hồ Chí Minh cho rằng: Dinh Độc Lập không chỉ là một di tích quốc gia đặc biệt mà còn là một không gian biểu tượng độc đáo của văn hóa chính trị Việt Nam hiện đại. Từ trung tâm quyền lực mang tính lịch sử, nơi đây đã chuyển hóa thành điểm hội tụ của ký ức dân tộc, khát vọng hòa bình, thống nhất lãnh thổ và hòa hợp cộng đồng trong một quốc gia từng trải qua chia cắt. Từ góc nhìn văn hóa học, Dinh Độc lập không chỉ tượng trưng cho sự kết thúc của chiến tranh mà còn mở ra một diễn ngôn lớn về sự thống nhất và hòa hợp dân tộc.\n\n" +
                     "Theo Tiến sĩ Tạ Duy Linh, trong tầng sâu biểu tượng, Dinh Độc Lập chính là nơi kết tinh của ý chí hòa hợp, thống nhất, nơi quá khứ được tưởng niệm không phải để khơi lại. Đây là không gian của bản lĩnh Việt Nam, biết vượt lên nỗi đau, hóa giải khác biệt bằng tinh thần bao dung và biến ký ức lịch sử thành động lực để kiến tạo một quốc gia thống nhất về ý chí, đoàn kết trong hành động. Vì vậy, việc bảo tồn và phát huy giá trị của Dinh ngày nay cần đặt trong một chiến lược văn hóa hiện đại, nhằm làm sống lại biểu tượng chứ không chỉ “đóng khung” trong hoài niệm. “Dinh Độc Lập có thể trở thành một trung tâm giáo dục công dân, một không gian trải nghiệm di sản, nơi thế hệ trẻ được truyền cảm hứng để hiểu rằng hòa bình, thống nhất và hòa hợp không phải là điều đã xong, mà là hành trình cần tiếp tục nuôi dưỡng qua từng thế hệ”, Tiến sĩ Tạ Duy Linh nói.");
             result.put("images", Arrays.asList(
-                    "https://upload.wikimedia.org/wikipedia/commons/7/7b/Independence_Palace_or_Reunification_Palace_%2812110973526%29.jpg",
-                    "https://upload.wikimedia.org/wikipedia/commons/6/6d/Dinh_%C4%90%E1%BB%99c_l%E1%BA%ADp.JPG"
+                    "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763733164/Dinh_%C4%91%E1%BB%99c_l%E1%BA%ADp_2_xp4jga.png",
+                    "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763733167/Dinh_%C4%91%E1%BB%99c_l%E1%BA%ADp_1_colrhd.png"
             ));
             return result;
         } else if (id==8) {
@@ -229,8 +229,8 @@ public class SearchController {
                     "Quảng trường sử dụng các đèn thủy ngân cao áp đặt trên các cột cao. Quảng trường còn có một hệ thống thông tin, truyền thanh, truyền hình. Các công trình này sẽ đảm bảo thông tin liên lạc, truyền thanh, thu thanh và thu phát hình tại chỗ.\n\n" +
                     "Công trình cây xanh, cây cảnh và vườn hoa làm tôn vẻ đẹp và tạo ra không khí trong lành cho toàn bộ khu vực Lăng và Quảng trường Ba Đình. Với tấm lòng kính yêu Bác vô hạn, các địa phương trên mọi miền đất nước đã gửi về Thủ đô những cây xanh, những loại hoa tiêu biểu cho vùng đất của mình.");
             result.put("images", Arrays.asList(
-                    "https://upload.wikimedia.org/wikipedia/commons/5/5e/Lascar_Ho_Ch%C3%AD_Minh_Mausoleum_%284550987354%29.jpg",
-                    "https://upload.wikimedia.org/wikipedia/commons/3/3f/Ho_Chi_Minh_tomb.jpg"
+                    "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763733205/67_mnfjex.png",
+                    "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763733202/66_sbtptn.png"
             ));
             return result;
         } else if (id==9) {
