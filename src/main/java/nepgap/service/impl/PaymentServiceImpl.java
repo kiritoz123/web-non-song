@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -39,6 +40,7 @@ public class PaymentServiceImpl implements PaymentService {
                 .description(request.getDescription())
                 .address(request.getAddress())
                 .status(PaymentStatus.PENDING)
+                .createAt(LocalDateTime.now())
                 .build();
 
         Payment savedPayment = paymentRepository.save(payment);

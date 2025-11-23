@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "payment")
@@ -36,5 +37,7 @@ public class Payment {
     private PaymentStatus status;
 
     private Long userId;
+
+    private LocalDateTime createAt;
 
 }
