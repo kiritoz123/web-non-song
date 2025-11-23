@@ -35,6 +35,8 @@ public class PaymentServiceImpl implements PaymentService {
                 .currency(request.getCurrency() != null ? request.getCurrency() : "VND")
                 .provider(request.getProvider() != null ? request.getProvider() : "MANUAL")
                 .phone(request.getPhone())
+                .receiver(request.getReceiver())
+                .description(request.getDescription())
                 .address(request.getAddress())
                 .status(PaymentStatus.PENDING)
                 .build();

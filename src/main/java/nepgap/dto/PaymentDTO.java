@@ -19,6 +19,8 @@ public class PaymentDTO {
     private String currency;
     private String provider;
     private String externalId;
+    private String receiver;
+    private String description;
     private PaymentStatus status;
     private Instant createdAt;
 }

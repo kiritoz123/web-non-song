@@ -28,6 +28,10 @@ public class Payment {
 
     private String currency;
 
+    private String receiver;
+
+    private String description;
+
     @Enumerated(EnumType.STRING)
     private PaymentStatus status;
 

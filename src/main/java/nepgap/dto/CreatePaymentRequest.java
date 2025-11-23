@@ -26,4 +26,6 @@ public class CreatePaymentRequest {
     private String address;
     private String currency;
     private String provider;
+    private String receiver;
+    private String description;
 }
