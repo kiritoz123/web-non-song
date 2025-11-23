@@ -25,7 +25,7 @@ public class CartController {
         ApiResponse<CartDTO> res = ApiResponse.<CartDTO>builder()
                 .timestamp(Instant.now())
                 .status(200)
-                .message("Cart fetched")
+                .message("Lấy giỏ hàng thành công")
                 .data(dto)
                 .path(req.getRequestURI())
                 .build();
@@ -41,7 +41,7 @@ public class CartController {
         ApiResponse<CartDTO> res = ApiResponse.<CartDTO>builder()
                 .timestamp(Instant.now())
                 .status(200)
-                .message("Item added")
+                .message("Thêm sản phẩm vào giỏ hàng thành công")
                 .data(dto)
                 .path(req.getRequestURI())
                 .build();
@@ -56,7 +56,7 @@ public class CartController {
         ApiResponse<CartDTO> res = ApiResponse.<CartDTO>builder()
                 .timestamp(Instant.now())
                 .status(200)
-                .message("Item removed")
+                .message("Xóa sản phẩm khỏi giỏ hàng thành công")
                 .data(dto)
                 .path(req.getRequestURI())
                 .build();

@@ -29,7 +29,7 @@ public class ProfileController {
         ApiResponse<ProfileDTO> response = ApiResponse.<ProfileDTO>builder()
                 .timestamp(Instant.now())
                 .status(200)
-                .message("Profile retrieved successfully")
+                .message("Lấy thông tin hồ sơ thành công")
                 .data(profile)
                 .path(req.getRequestURI())
                 .build();
@@ -45,7 +45,7 @@ public class ProfileController {
         ApiResponse<ProfileDTO> response = ApiResponse.<ProfileDTO>builder()
                 .timestamp(Instant.now())
                 .status(200)
-                .message("Profile updated successfully")
+                .message("Cập nhật hồ sơ thành công")
                 .data(profile)
                 .path(req.getRequestURI())
                 .build();

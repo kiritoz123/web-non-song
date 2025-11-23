@@ -36,7 +36,7 @@ public class GlobalExceptionHandler {
         ApiResponse<Object> body = ApiResponse.builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.BAD_REQUEST.value())
-                .message("Validation failed")
+                .message("Xác thực dữ liệu thất bại")
                 .errors(errors)
                 .path(req.getRequestURI())
                 .build();
@@ -48,7 +48,7 @@ public class GlobalExceptionHandler {
         ApiResponse<Object> body = ApiResponse.builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.UNAUTHORIZED.value())
-                .message("Authentication failed")
+                .message("Xác thực thất bại")
                 .errors(ex.getMessage())
                 .path(req.getRequestURI())
                 .build();
@@ -60,7 +60,7 @@ public class GlobalExceptionHandler {
         ApiResponse<Object> body = ApiResponse.builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.FORBIDDEN.value())
-                .message("Access denied")
+                .message("Không có quyền truy cập")
                 .errors(ex.getMessage())
                 .path(req.getRequestURI())
                 .build();
@@ -72,7 +72,7 @@ public class GlobalExceptionHandler {
         ApiResponse<Object> body = ApiResponse.builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                .message("Internal server error")
+                .message("Lỗi máy chủ nội bộ")
                 .errors(ex.getMessage())
                 .path(req.getRequestURI())
                 .build();

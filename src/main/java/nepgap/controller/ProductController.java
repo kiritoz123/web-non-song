@@ -39,7 +39,7 @@ public class ProductController {
             ApiResponse<List<ProductProjection>> ar = ApiResponse.<List<ProductProjection>>builder()
                     .timestamp(Instant.now())
                     .status(HttpStatus.OK.value())
-                    .message("Products fetched")
+                    .message("Lấy danh sách sản phẩm thành công")
                     .data(list)
                     .path(req.getRequestURI())
                     .build();
@@ -49,7 +49,7 @@ public class ProductController {
             ApiResponse<List<ProductProjection>> ar = ApiResponse.<List<ProductProjection>>builder()
                     .timestamp(Instant.now())
                     .status(HttpStatus.OK.value())
-                    .message("Products fetched")
+                    .message("Lấy danh sách sản phẩm thành công")
                     .data(list)
                     .path(req.getRequestURI())
                     .build();
@@ -64,7 +64,7 @@ public class ProductController {
             ApiResponse<List<ProductProjection>> ar = ApiResponse.<List<ProductProjection>>builder()
                     .timestamp(Instant.now())
                     .status(HttpStatus.OK.value())
-                    .message("Products fetched")
+                    .message("Lấy danh sách sản phẩm sắp ra mắt thành công")
                     .data(list)
                     .path(req.getRequestURI())
                     .build();
@@ -79,7 +79,7 @@ public class ProductController {
             ApiResponse<ProductProjection> ar = ApiResponse.<ProductProjection>builder()
                     .timestamp(Instant.now())
                     .status(HttpStatus.NOT_FOUND.value())
-                    .message("Product not found")
+                    .message("Không tìm thấy sản phẩm")
                     .path(req.getRequestURI())
                     .build();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ar);
@@ -87,7 +87,7 @@ public class ProductController {
         ApiResponse<ProductProjection> ar = ApiResponse.<ProductProjection>builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.OK.value())
-                .message("Product fetched")
+                .message("Lấy thông tin sản phẩm thành công")
                 .data(p.get())
                 .path(req.getRequestURI())
                 .build();
@@ -105,7 +105,7 @@ public class ProductController {
         ApiResponse<Product> ar = ApiResponse.<Product>builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.CREATED.value())
-                .message("Product created")
+                .message("Tạo sản phẩm thành công")
                 .data(saved)
                 .path(req.getRequestURI())
                 .build();
@@ -129,7 +129,7 @@ public class ProductController {
         ApiResponse<Product> ar = ApiResponse.<Product>builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.OK.value())
-                .message("Product updated")
+                .message("Cập nhật sản phẩm thành công")
                 .data(updated)
                 .path(req.getRequestURI())
                 .build();
@@ -144,7 +144,7 @@ public class ProductController {
             ApiResponse<Object> ar = ApiResponse.builder()
                     .timestamp(Instant.now())
                     .status(HttpStatus.NOT_FOUND.value())
-                    .message("Product not found")
+                    .message("Không tìm thấy sản phẩm")
                     .path(req.getRequestURI())
                     .build();
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ar);
@@ -153,7 +153,7 @@ public class ProductController {
         ApiResponse<Object> ar = ApiResponse.builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.OK.value())
-                .message("Product deleted")
+                .message("Xóa sản phẩm thành công")
                 .path(req.getRequestURI())
                 .build();
         return ResponseEntity.ok(ar);
@@ -171,7 +171,7 @@ public class ProductController {
         ApiResponse<Product> ar = ApiResponse.<Product>builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.OK.value())
-                .message("Stock updated")
+                .message("Cập nhật tồn kho thành công")
                 .data(saved)
                 .path(req.getRequestURI())
                 .build();

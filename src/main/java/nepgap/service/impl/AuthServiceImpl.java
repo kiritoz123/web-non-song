@@ -60,7 +60,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public ApiResponse<?> register(SignUpRequest request, String path) {
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new ApiException("Email is already in use", HttpStatus.BAD_REQUEST);
+            throw new ApiException("Email đã được sử dụng", HttpStatus.BAD_REQUEST);
         }
         Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
                 .orElseThrow(() -> new ApiException("Default role not configured", HttpStatus.INTERNAL_SERVER_ERROR));
@@ -77,7 +77,7 @@ public class AuthServiceImpl implements AuthService {
         ApiResponse<Object> res = ApiResponse.builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.CREATED.value())
-                .message("User registered successfully")
+                .message("Đăng ký tài khoản thành công")
                 .data(Map.of("email", user.getEmail(), "id", user.getId()))
                 .path(path)
                 .build();
@@ -87,14 +87,14 @@ public class AuthServiceImpl implements AuthService {
     public boolean requestSendEmailForgetPassword(Map<String, Object> request, StringBuilder message)
     {
         if(!request.containsKey("email")) {
-            message.append("Key email missing");
+            message.append("Thiếu email");
             return false;
         }
 
         String email = request.get("email").toString();
         Optional<User> usersEntityOptional = userRepository.findByEmail(email);
         if (!usersEntityOptional.isPresent()) {
-            message.append("Email is not found");
+            message.append("Email không tồn tại");
             return false;
         }
         User usersEntity = usersEntityOptional.get();
@@ -103,11 +103,11 @@ public class AuthServiceImpl implements AuthService {
             String otpCode = String.format("%06d", new Random().nextInt(999999));
             sendRecoveryEmail(email, otpCode);
             otpCacheService.putOtp(email, otpCode, 180);
-            message.append("Send email forgot password success");
+            message.append("Gửi email khôi phục mật khẩu thành công");
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();
-            message.append("Send email forgot password error for exception");
+            message.append("Gửi email khôi phục mật khẩu thất bại");
             return false;
         }
     }

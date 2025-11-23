@@ -27,7 +27,7 @@ public class SearchController {
         ApiResponse<List<SearchResultDTO>> res = ApiResponse.<List<SearchResultDTO>>builder()
                 .timestamp(Instant.now())
                 .status(200)
-                .message("Search results")
+                .message("Tìm kiếm thành công")
                 .data(list)
                 .path(req.getRequestURI())
                 .build();

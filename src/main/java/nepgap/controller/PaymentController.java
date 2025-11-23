@@ -33,7 +33,7 @@ public class PaymentController {
         ApiResponse<PaymentDTO> response = ApiResponse.<PaymentDTO>builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.CREATED.value())
-                .message("Payment created successfully")
+                .message("Tạo thanh toán thành công")
                 .data(payment)
                 .path(req.getRequestURI())
                 .build();
@@ -49,7 +49,7 @@ public class PaymentController {
         ApiResponse<PaymentDTO> response = ApiResponse.<PaymentDTO>builder()
                 .timestamp(Instant.now())
                 .status(200)
-                .message("Payment retrieved successfully")
+                .message("Lấy thông tin thanh toán thành công")
                 .data(payment)
                 .path(req.getRequestURI())
                 .build();
@@ -64,7 +64,7 @@ public class PaymentController {
         ApiResponse<List<PaymentDTO>> response = ApiResponse.<List<PaymentDTO>>builder()
                 .timestamp(Instant.now())
                 .status(200)
-                .message("Payments retrieved successfully")
+                .message("Lấy danh sách thanh toán thành công")
                 .data(payments)
                 .path(req.getRequestURI())
                 .build();
@@ -78,7 +78,7 @@ public class PaymentController {
         ApiResponse<List<Payment>> response = ApiResponse.<List<Payment>>builder()
                 .timestamp(Instant.now())
                 .status(200)
-                .message("Payments retrieved successfully")
+                .message("Lấy tất cả thanh toán thành công")
                 .data(payments)
                 .path(req.getRequestURI())
                 .build();
@@ -95,7 +95,7 @@ public class PaymentController {
         ApiResponse<PaymentDTO> response = ApiResponse.<PaymentDTO>builder()
                 .timestamp(Instant.now())
                 .status(200)
-                .message("Payment status updated successfully")
+                .message("Cập nhật trạng thái thanh toán thành công")
                 .data(payment)
                 .path(req.getRequestURI())
                 .build();

@@ -46,7 +46,7 @@ public class AuthController {
         ApiResponse<AuthResponse> res = ApiResponse.<AuthResponse>builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.OK.value())
-                .message("Login successful")
+                .message("Đăng nhập thành công")
                 .data(auth)
                 .path(httpReq.getRequestURI())
                 .build();
@@ -66,7 +66,7 @@ public class AuthController {
             ApiResponse<AuthResponse> bad = ApiResponse.<AuthResponse>builder()
                     .timestamp(Instant.now())
                     .status(HttpStatus.BAD_REQUEST.value())
-                    .message("refreshToken is required")
+                    .message("refreshToken là bắt buộc")
                     .path(httpReq.getRequestURI())
                     .build();
             return ResponseEntity.badRequest().body(bad);
@@ -76,7 +76,7 @@ public class AuthController {
             ApiResponse<AuthResponse> unauthorized = ApiResponse.<AuthResponse>builder()
                     .timestamp(Instant.now())
                     .status(HttpStatus.UNAUTHORIZED.value())
-                    .message("Invalid or expired refresh token")
+                    .message("Refresh token không hợp lệ hoặc đã hết hạn")
                     .path(httpReq.getRequestURI())
                     .build();
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(unauthorized);
@@ -99,7 +99,7 @@ public class AuthController {
         ApiResponse<AuthResponse> ok = ApiResponse.<AuthResponse>builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.OK.value())
-                .message("Token refreshed")
+                .message("Làm mới token thành công")
                 .data(resp)
                 .path(httpReq.getRequestURI())
                 .build();
@@ -131,22 +131,22 @@ public class AuthController {
             User user = optional.get();
             user.setPassword(passwordEncoder.encode(password));
             userRepository.save(user);
-            return ResponseEntity.ok("Reset password success");
+            return ResponseEntity.ok("Đặt lại mật khẩu thành công");
         } else {
-            return ResponseEntity.badRequest().body("Reset fail");
+            return ResponseEntity.badRequest().body("Đặt lại mật khẩu thất bại");
         }
     }
     @PostMapping("/user/avatar/upload")
     public ResponseEntity<?> uploadAvatar(@RequestParam(value = "avatar") MultipartFile avatar,@AuthenticationPrincipal UserPrincipal user) throws IOException {
         if((!avatar.getContentType().equals("image/png") &&
                 !avatar.getContentType().equals("image/jpeg")) || avatar.equals(null)) {
-            return ResponseEntity.badRequest().body("file extension must be .jpeg or .png");
+            return ResponseEntity.badRequest().body("Định dạng file phải là .jpeg hoặc .png");
         }
         String username = user.getEmail();
         if(uploadAvatar(avatar, username)) {
-            return ResponseEntity.ok("Update avatar user: " + username + " success");
+            return ResponseEntity.ok("Cập nhật ảnh đại diện người dùng: " + username + " thành công");
         } else {
-            return ResponseEntity.badRequest().body("Update avatar user: " + username + " fail");
+            return ResponseEntity.badRequest().body("Cập nhật ảnh đại diện người dùng: " + username + " thất bại");
         }
     }
     private Boolean uploadAvatar(MultipartFile avatar, String username) throws IOException {
