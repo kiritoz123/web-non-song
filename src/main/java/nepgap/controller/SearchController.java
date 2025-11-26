@@ -242,22 +242,22 @@ public class SearchController {
                     "1. Đoan Môn (Cửa Nam)\n\n" +
                     "Đoan Môn hay Cửa Nam là cổng chính dẫn vào khu trung tâm của Hoàng thành Thăng Long, từng là lối đi dành riêng cho vua và các quan đại thần. Cổng được xây dựng kiên cố bằng gạch đá xếp chồng với năm lối đi hình vòm, trong đó cửa trung tâm chỉ dành cho hoàng đế.\n\n" +
                     "Phía trên Đoan Môn có một tầng lầu từng được sử dụng để quan sát và kiểm soát lối ra vào Hoàng thành. Những họa tiết chạm khắc trên cổng mang dấu ấn giao thoa giữa kiến trúc Việt Nam và Trung Hoa, thể hiện sự tinh xảo trong nghệ thuật xây dựng cung đình thời phong kiến. Đây là một trong những công trình nguyên vẹn nhất của Hoàng thành, giúp du khách hình dung rõ hơn về sự bề thế của kinh thành Thăng Long xưa.\n\n" +
-                    "1. Điện Kính Thiên\n\n" +
+                    "2. Điện Kính Thiên\n\n" +
                     "Là trung tâm quyền lực của Hoàng thành Thăng Long, Điện Kính Thiên từng là nơi diễn ra các nghi lễ quan trọng và các hoạt động triều chính dưới thời Lê và Nguyễn. Dù phần lớn công trình đã bị phá hủy trong thời kỳ thuộc địa, nền móng và bậc thềm rồng đá vẫn còn tồn tại, minh chứng cho sự uy nghi của cung điện hoàng gia một thời.\n" +
                     "Nổi bật nhất là bậc thềm rồng dẫn lên điện với những đường nét chạm khắc tinh xảo, thể hiện đỉnh cao nghệ thuật điêu khắc thời Lê Sơ. Các nhà sử học tin rằng Điện Kính Thiên từng là nơi đặt ngai vàng của hoàng đế. Ngày nay, khu vực này vẫn là địa điểm nghiên cứu quan trọng, đồng thời là nơi tổ chức các sự kiện văn hóa nhằm tái hiện phần nào diện mạo cung điện xưa.\n\n" +
-                    "1. Hậu Lâu (Lầu Công Chúa)\n\n" +
+                    "3. Hậu Lâu (Lầu Công Chúa)\n\n" +
                     "Hậu Lâu hay còn gọi là Lầu Công Chúa, được cho là nơi ở của các cung phi và công chúa trong hoàng tộc. Tòa nhà mang phong cách kiến trúc cổ điển Việt Nam với mái ngói cong và tường dày giúp điều hòa không khí, tạo không gian mát mẻ vào mùa hè và ấm áp vào mùa đông.\n\n" +
                     "So với các công trình khác trong Hoàng thành, Hậu Lâu mang vẻ đẹp thanh tao, trầm mặc, gợi lên hình ảnh cuộc sống cung đình xưa. Hiện nay, nơi đây trưng bày nhiều tư liệu và hiện vật liên quan đến đời sống hoàng gia, giúp du khách hiểu thêm về vị trí và vai trò của nữ giới trong hoàng tộc phong kiến Việt Nam.\n\n" +
-                    "1. Nhà và Hầm D67\n\n" +
+                    "4. Nhà và Hầm D67\n\n" +
                     "Nhà D67 là công trình quan trọng trong giai đoạn kháng chiến chống Mỹ, từng là nơi làm việc của Bộ Tổng Tham mưu và Quân ủy Trung ương Quân đội Nhân dân Việt Nam. Tại đây, nhiều quyết định chiến lược đã được đưa ra, bao gồm kế hoạch cho cuộc Tổng tiến công và nổi dậy Mậu Thân 1968.\n\n" +
                     "Công trình có thiết kế đặc biệt với tường bê tông dày và trần nhà gia cố để chống bom, đảm bảo an toàn tối đa cho các cuộc họp quân sự quan trọng. Bên trong Nhà D67, du khách có thể thấy các bản đồ tác chiến, điện thoại liên lạc, bàn ghế làm việc vẫn được giữ nguyên, tái hiện không gian chỉ huy trong thời chiến. Đây là một điểm tham quan quan trọng giúp người xem hiểu rõ hơn về chiến lược quân sự và tinh thần đấu tranh của dân tộc trong thời kỳ kháng chiến.\n\n" +
-                    "1. Chính Bắc Môn (Cửa Bắc)\n\n" +
+                    "5. Chính Bắc Môn (Cửa Bắc)\n\n" +
                     "Chính Bắc Môn hay Cửa Bắc là cổng thành duy nhất còn lại của Hoàng thành Thăng Long, mang trên mình những dấu tích chiến tranh từ thế kỷ 19. Công trình được xây dựng bằng gạch và đá, với thiết kế kiên cố nhằm bảo vệ kinh thành khỏi các cuộc tấn công từ phía Bắc.\n\n" +
                     "Những vết đạn đại bác còn in trên tường thành là minh chứng cho cuộc kháng chiến chống thực dân Pháp đầy kiên cường của nhân dân ta. Bên trong cổng có một phòng trưng bày nhỏ, lưu giữ các hiện vật và tư liệu lịch sử liên quan đến quá trình bảo vệ kinh thành. Du khách cũng có thể leo lên đỉnh cổng để ngắm toàn cảnh khu Hoàng thành từ trên cao.\n\n" +
-                    "1. Cột cờ Hà Nội\n\n" +
+                    "6. Cột cờ Hà Nội\n\n" +
                     "Cột cờ Hà Nội là một trong những biểu tượng lịch sử tiêu biểu của thủ đô, được xây dựng vào năm 1812 dưới triều Nguyễn với mục đích quan sát quân sự. Công trình cao 33,4 mét, bao gồm ba tầng đế hình vuông và một tháp lục giác phía trên. Đây là một trong số ít kiến trúc của Hoàng thành Thăng Long không bị phá hủy trong thời kỳ Pháp thuộc, giữ nguyên giá trị lịch sử qua nhiều biến cố.\n\n" +
                     "Bên trong tháp có cầu thang xoắn dẫn lên các ô cửa sổ quan sát, từng được sử dụng như trạm canh gác quan trọng của kinh thành xưa. Khi đêm xuống, Cột cờ Hà Nội trở nên lung linh dưới ánh đèn, nổi bật giữa bầu trời thành phố, tạo nên khung cảnh đầy ấn tượng.\n\n" +
-                    "1. Khu khảo cổ số 18 Hoàng Diệu\n\n" +
+                    "7. Khu khảo cổ số 18 Hoàng Diệu\n\n" +
                     "Nằm ngay trong khuôn viên Hoàng thành, khu khảo cổ 18 Hoàng Diệu là nơi phát hiện nhiều dấu tích quan trọng của kinh thành xưa. Khu vực này bao gồm hàng loạt hố khai quật với nền móng cung điện, giếng cổ, hệ thống thoát nước bằng gạch thời Lý - Trần, phản ánh sự phát triển liên tục của Hoàng thành qua các thời kỳ. Tại đây, du khách có thể chiêm ngưỡng hàng nghìn di vật cổ như gạch lát nền thời Lý, ngói mũi sen, gốm sứ men ngọc, cùng nhiều vật phẩm trang trí cung điện của các triều đại phong kiến.");
             result.put("images", Arrays.asList(
                     "https://res.cloudinary.com/dlmo3dq0p/image/upload/v1763565045/ho%C3%A0ng_th%C3%A0nh_th%C4%83ng_long_-_post_1_lujhju.png",
